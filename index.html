@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO. La URL del sitio (https://axes.dev/) se repite en canonical, og:url, twitter, el JSON-LD,
+     robots.txt y sitemap.xml: si cambia el dominio hay que cambiarla en todos. -->
+<title>Axes Dev | Desarrollo de páginas web y software a medida</title>
+<meta name="description" content="Axes Dev (axesdev): desarrollo de páginas web, apps móviles y programación a medida. Software desde cero, sin plantillas. Escríbenos por WhatsApp.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="Axes Dev">
+<meta name="theme-color" content="#0D0D0D">
+<link rel="canonical" href="https://axes.dev/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<!-- Open Graph / Twitter: vista previa del enlace al compartirlo -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Axes Dev">
+<meta property="og:title" content="Axes Dev | Desarrollo de páginas web y software a medida">
+<meta property="og:description" content="Desarrollo de páginas web, aplicaciones móviles y programación a medida. Construimos tu software desde cero, sin plantillas.">
+<meta property="og:url" content="https://axes.dev/">
+<meta property="og:image" content="https://axes.dev/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Axes Dev — Desarrollo de páginas web y software a medida">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Axes Dev | Desarrollo de páginas web y software a medida">
+<meta name="twitter:description" content="Desarrollo de páginas web, aplicaciones móviles y programación a medida. Construimos tu software desde cero, sin plantillas.">
+<meta name="twitter:image" content="https://axes.dev/assets/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- Datos estructurados (schema.org): quién es Axes Dev, qué ofrece y quién está detrás -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://axes.dev/#organization",
+      "name": "Axes Dev",
+      "alternateName": ["axesdev", "axes.dev", "Axes"],
+      "url": "https://axes.dev/",
+      "logo": "https://axes.dev/assets/favicon.svg",
+      "image": "https://axes.dev/assets/og-image.png",
+      "slogan": "Tu idea ya tiene equipo.",
+      "telephone": "+57-322-940-1530",
+      "contactPoint": { "@type": "ContactPoint", "telephone": "+57-322-940-1530", "contactType": "sales", "availableLanguage": "es" },
+      "description": "Estudio de desarrollo de software: páginas web, aplicaciones móviles, optimización de plataformas, diseño UX/UI y consultoría IT, todo a medida y desde cero.",
+      "knowsAbout": ["Desarrollo de páginas web", "Desarrollo de aplicaciones móviles", "Programación a medida", "Optimización de plataformas", "Diseño UX/UI", "Consultoría IT", "React", "React Native", "Node.js", "NestJS", "MongoDB", "TypeScript"],
+      "employee": [
+        { "@type": "Person", "name": "Andrés Carvajal", "jobTitle": "Líder de Desarrollo" },
+        { "@type": "Person", "name": "Liced Castrillón", "jobTitle": "Líder de Producto" },
+        { "@type": "Person", "name": "Edgar Palma", "jobTitle": "Líder de Infraestructura" }
+      ],
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Desarrollo de páginas web y aplicaciones móviles", "description": "Aplicaciones web y móviles desde cero, hechas exactamente para lo que el negocio necesita." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Optimización de plataformas", "description": "Análisis, corrección y mejora de rendimiento y seguridad de plataformas existentes." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diseño UX/UI", "description": "Diseño de la experiencia e interfaz antes de escribir una línea de código." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Consultoría IT", "description": "Decisiones técnicas correctas antes de invertir: arquitectura, estrategia y roadmap." } }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://axes.dev/#website",
+      "url": "https://axes.dev/",
+      "name": "Axes Dev",
+      "inLanguage": "es",
+      "publisher": { "@id": "https://axes.dev/#organization" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://axes.dev/#webpage",
+      "url": "https://axes.dev/",
+      "name": "Axes Dev | Desarrollo de páginas web y software a medida",
+      "description": "Desarrollo de páginas web, aplicaciones móviles y programación a medida. Construimos tu software desde cero, sin plantillas.",
+      "inLanguage": "es",
+      "isPartOf": { "@id": "https://axes.dev/#website" },
+      "about": { "@id": "https://axes.dev/#organization" },
+      "primaryImageOfPage": "https://axes.dev/assets/og-image.png"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- Fijos: cursor y barra de progreso -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<div class="progress" id="progress"></div>
+
+<nav class="nav" id="nav" aria-label="Principal">
+  <div class="nav__logo">Axes<span>.dev</span></div>
+  <ul class="nav__links" id="nav-links">
+    <li><a href="#s-servicios">Servicios</a></li>
+    <li><a href="#s-diferencial">Diferencial</a></li>
+    <!-- <li><a href="#s-caso">Proyectos</a></li>  (sección de casos deshabilitada) -->
+    <li><a href="#s-equipo">Equipo</a></li>
+    <li class="nav__cta-item"><a href="https://wa.me/573229401530?text=Hola%20Axes%20Dev%2C%20tengo%20un%20proyecto%20y%20quiero%20conversar." target="_blank" rel="noopener" class="nav__cta">→ Hablemos</a></li>
+  </ul>
+  <a href="https://wa.me/573229401530?text=Hola%20Axes%20Dev%2C%20tengo%20un%20proyecto%20y%20quiero%20conversar." target="_blank" rel="noopener" class="nav__cta nav__cta--desktop">→ Hablemos</a>
+  <button class="nav__burger" id="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+</nav>
+
+<main>
+
+<!-- ══ 01 HERO ══ -->
+<section class="hero" id="hero">
+  <div class="hero__grid" id="grid-bg"></div>
+  <p class="hero__pre">// axes.dev — software a medida</p>
+  <h1 class="hero__title" id="hero-title"><span class="sr-only">Axes Dev: desarrollo de páginas web, aplicaciones móviles y software a medida</span><span id="typed-text" aria-hidden="true"></span><span class="hero__caret" id="cblink" aria-hidden="true"></span></h1>
+  <p class="hero__sub" id="hero-sub">Desarrollo de páginas web, aplicaciones móviles y programación a medida. Construimos el software que tu negocio necesita desde cero, sin plantillas, sin rodeos.</p>
+  <div class="hero__actions">
+    <a href="https://wa.me/573229401530?text=Hola%20Axes%20Dev%2C%20tengo%20un%20proyecto%20y%20quiero%20conversar." target="_blank" rel="noopener" class="btn btn--primary">→ Hablemos<span class="btn__cmd">npm run axes --proyecto=tuyo</span></a>
+    <!-- <a href="#s-caso" class="btn btn--ghost">Ver proyectos →</a>  (sección de casos deshabilitada) -->
+  </div>
+
+  <div class="scroll-hint"><span>SCROLL</span><div class="scroll-hint__line"></div></div>
+
+  <!-- Ticker del stack: tres copias para que el loop sea continuo -->
+  <div class="ticker">
+    <div class="ticker__track">
+      <span class="tag tag--lg">Node.js</span><span class="tag tag--lg">NestJS</span><span class="tag tag--lg">React</span><span class="tag tag--lg">React Native</span><span class="tag tag--lg">MongoDB</span><span class="tag tag--lg">TypeScript</span><span class="tag tag--lg">JavaScript</span>
+      <span class="ticker__sep">·</span>
+      <span class="tag tag--lg">Node.js</span><span class="tag tag--lg">NestJS</span><span class="tag tag--lg">React</span><span class="tag tag--lg">React Native</span><span class="tag tag--lg">MongoDB</span><span class="tag tag--lg">TypeScript</span><span class="tag tag--lg">JavaScript</span>
+      <span class="ticker__sep">·</span>
+      <span class="tag tag--lg">Node.js</span><span class="tag tag--lg">NestJS</span><span class="tag tag--lg">React</span><span class="tag tag--lg">React Native</span><span class="tag tag--lg">MongoDB</span><span class="tag tag--lg">TypeScript</span><span class="tag tag--lg">JavaScript</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 PROBLEMA ══ -->
+<div class="sticky-outer" id="s-prob-outer">
+  <section class="sticky-inner sticky-inner--light prob" id="s-problema">
+    <span class="sec-annotation sec-annotation--light">02 / EL PROBLEMA</span>
+    <p class="sec-label prob__label" id="prob-label">// el problema</p>
+    <h2 class="prob__text">
+      <span class="pw pw--lg">Tu plataforma actual</span>
+      <span class="pw pw--lg pw--strong pw-hl pw-hl--green">te está costando clientes.</span>
+    </h2>
+    <p class="prob__text">
+      <span class="pw pw--md">No porque seas malo en lo tuyo,</span>
+      <span class="pw pw--sm pw-hl pw-hl--dark">sino porque fue hecha para otro negocio, no para el tuyo.</span>
+    </p>
+  </section>
+</div>
+
+<!-- ══ 03 LO QUE CONSTRUIMOS ══ -->
+<div class="sticky-outer" id="s-svc-outer">
+  <section class="sticky-inner svc" id="s-servicios">
+    <span class="sec-annotation">03 / LO QUE CONSTRUIMOS</span>
+    <div class="svc__track">
+      <div class="svc__head">
+        <p class="sec-label">// lo que construimos</p>
+        <h2 class="sec-title">Lo que<br>construimos.</h2>
+      </div>
+      <div class="svc__progress"><div class="svc__progress-fill" id="svc-hprog"></div></div>
+      <div class="svc__counter" id="svc-counter">01 / 04</div>
+
+      <!-- Track horizontal: 4 slides, se desplaza con el scroll -->
+      <div class="svc__slides" id="svc-slides">
+        <!-- Slide 01: Browser + mobile: los bloques se dibujan uno a uno -->
+        <article class="svc-slide">
+          <div class="svc-slide__text">
+            <span class="svc-slide__num">01 ——</span>
+            <h3 class="svc-slide__title">Desarrollo <br>Web y Mobile</h3>
+            <p class="svc-slide__desc">Desarrollo de páginas web y aplicaciones móviles desde cero, hechas exactamente para lo que tu negocio necesita, en cualquier pantalla.</p>
+            <div class="tags"><span class="tag">React</span><span class="tag">React Native</span><span class="tag">Node.js</span></div>
+          </div>
+          <div class="svc-slide__art">
+            <svg class="svc-svg" id="svg-web" role="img" aria-label="Ilustración: desarrollo de páginas web y aplicaciones móviles" viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="g1" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(var(--white-rgb),0.04)" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="420" height="260" fill="url(#g1)"/>
+              <!-- Browser frame — se dibuja -->
+              <rect x="20" y="20" width="260" height="180" rx="4" fill="none" stroke="rgba(var(--white-rgb),0.12)" stroke-width="1" stroke-dasharray="900" stroke-dashoffset="900">
+                <animate attributeName="stroke-dashoffset" from="900" to="0" dur="1.2s" fill="freeze" begin="0.5s"/>
+              </rect>
+              <rect x="20" y="20" width="260" height="24" rx="4" fill="rgba(var(--white-rgb),0.05)" opacity="0">
+                <animate attributeName="opacity" from="0" to="1" dur="0.4s" fill="freeze" begin="1.3s"/>
+              </rect>
+              <circle cx="35" cy="32" r="3" fill="rgba(var(--white-rgb),0.15)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.5s"/></circle>
+              <circle cx="48" cy="32" r="3" fill="rgba(var(--white-rgb),0.15)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.6s"/></circle>
+              <circle cx="61" cy="32" r="3" fill="rgba(var(--white-rgb),0.15)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.7s"/></circle>
+              <!-- Content bloques aparecen uno a uno -->
+              <rect x="32" y="56" width="100" height="8" rx="2" fill="rgba(var(--green-rgb),0.6)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" fill="freeze" begin="1.8s"/></rect>
+              <rect x="32" y="70" width="160" height="5" rx="2" fill="rgba(var(--white-rgb),0.12)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.0s"/></rect>
+              <rect x="32" y="80" width="140" height="5" rx="2" fill="rgba(var(--white-rgb),0.08)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.1s"/></rect>
+              <rect x="32" y="95" width="80" height="24" rx="2" fill="rgba(var(--green-rgb),0.2)" stroke="rgba(var(--green-rgb),0.5)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" fill="freeze" begin="2.3s"/></rect>
+              <text x="72" y="111" font-family="monospace" font-size="7" fill="rgba(var(--green-rgb),0.9)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.5s"/>→ Empezar</text>
+              <rect x="32" y="130" width="60" height="48" rx="2" fill="rgba(var(--white-rgb),0.04)" stroke="rgba(var(--white-rgb),0.08)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.6s"/></rect>
+              <rect x="100" y="130" width="60" height="48" rx="2" fill="rgba(var(--white-rgb),0.04)" stroke="rgba(var(--white-rgb),0.08)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.7s"/></rect>
+              <rect x="168" y="130" width="60" height="48" rx="2" fill="rgba(var(--white-rgb),0.04)" stroke="rgba(var(--white-rgb),0.08)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.8s"/></rect>
+              <!-- Mobile frame -->
+              <rect x="300" y="40" width="100" height="180" rx="8" fill="none" stroke="rgba(var(--white-rgb),0.15)" stroke-width="1" stroke-dasharray="600" stroke-dashoffset="600">
+                <animate attributeName="stroke-dashoffset" from="600" to="0" dur="1s" fill="freeze" begin="1.0s"/>
+              </rect>
+              <rect x="310" y="52" width="80" height="12" rx="2" fill="rgba(var(--green-rgb),0.4)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" fill="freeze" begin="2.1s"/></rect>
+              <rect x="310" y="70" width="80" height="5" rx="2" fill="rgba(var(--white-rgb),0.1)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.3s"/></rect>
+              <rect x="310" y="95" width="80" height="50" rx="4" fill="rgba(var(--white-rgb),0.04)" stroke="rgba(var(--white-rgb),0.08)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.5s"/></rect>
+              <rect x="310" y="155" width="80" height="18" rx="3" fill="rgba(var(--green-rgb),0.2)" stroke="rgba(var(--green-rgb),0.4)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" fill="freeze" begin="2.7s"/></rect>
+              <text x="350" y="167" font-family="monospace" font-size="6" fill="rgba(var(--green-rgb),0.9)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.8s"/>→ Acción</text>
+              <path d="M 280 110 C 290 110 298 110 300 110" stroke="rgba(var(--green-rgb),0.4)" stroke-width="0.8" fill="none" stroke-dasharray="25" stroke-dashoffset="25">
+                <animate attributeName="stroke-dashoffset" from="25" to="0" dur="0.5s" fill="freeze" begin="2.9s"/>
+              </path>
+            </svg>
+          </div>
+        </article>
+
+        <!-- Slide 02: Antes/después: barras de tiempo de carga -->
+        <article class="svc-slide">
+          <div class="svc-slide__text">
+            <span class="svc-slide__num">02 ——</span>
+            <h3 class="svc-slide__title">Optimización <br>de plataformas</h3>
+            <p class="svc-slide__desc">Si ya tienes algo construido pero no funciona como debería, lo analizamos, lo corregimos y lo hacemos correr bien.</p>
+            <div class="tags"><span class="tag">Performance</span><span class="tag">Security</span><span class="tag">Refactor</span></div>
+          </div>
+          <div class="svc-slide__art">
+            <svg class="svc-svg" id="svg-opt" role="img" aria-label="Ilustración: optimización de plataformas, antes y después" viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="g2" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(var(--white-rgb),0.04)" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="420" height="260" fill="url(#g2)"/>
+              <text x="20" y="30" font-family="monospace" font-size="8" fill="rgba(var(--white-rgb),0.3)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" fill="freeze" begin="0s"/>ANTES</text>
+              <text x="240" y="30" font-family="monospace" font-size="8" fill="rgba(var(--green-rgb),0.8)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" fill="freeze" begin="1.2s"/>DESPUÉS</text>
+              <!-- Baseline -->
+              <line x1="20" y1="183" x2="400" y2="183" stroke="rgba(var(--white-rgb),0.06)" stroke-width="0.5"/>
+              <!-- Barras ANTES — crecen desde baseline hacia arriba -->
+              <rect x="20" y="183" width="30" height="0" rx="2" fill="rgba(var(--red2-rgb),0.2)" stroke="rgba(var(--red2-rgb),0.3)" stroke-width="0.5">
+                <animate attributeName="height" from="0" to="120" dur="0.7s" fill="freeze" begin="0.2s"/>
+                <animate attributeName="y" from="183" to="63" dur="0.7s" fill="freeze" begin="0.2s"/>
+              </rect>
+              <rect x="58" y="183" width="30" height="0" rx="2" fill="rgba(var(--red2-rgb),0.2)" stroke="rgba(var(--red2-rgb),0.3)" stroke-width="0.5">
+                <animate attributeName="height" from="0" to="80" dur="0.7s" fill="freeze" begin="0.35s"/>
+                <animate attributeName="y" from="183" to="103" dur="0.7s" fill="freeze" begin="0.35s"/>
+              </rect>
+              <rect x="96" y="183" width="30" height="0" rx="2" fill="rgba(var(--red2-rgb),0.2)" stroke="rgba(var(--red2-rgb),0.3)" stroke-width="0.5">
+                <animate attributeName="height" from="0" to="100" dur="0.7s" fill="freeze" begin="0.5s"/>
+                <animate attributeName="y" from="183" to="83" dur="0.7s" fill="freeze" begin="0.5s"/>
+              </rect>
+              <rect x="134" y="183" width="30" height="0" rx="2" fill="rgba(var(--red2-rgb),0.2)" stroke="rgba(var(--red2-rgb),0.3)" stroke-width="0.5">
+                <animate attributeName="height" from="0" to="70" dur="0.7s" fill="freeze" begin="0.65s"/>
+                <animate attributeName="y" from="183" to="113" dur="0.7s" fill="freeze" begin="0.65s"/>
+              </rect>
+              <text x="35" y="198" font-family="monospace" font-size="6" fill="rgba(var(--red2-rgb),0.6)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="0.9s"/>8.2s</text>
+              <!-- Flecha axes -->
+              <path d="M 180 120 L 225 120" stroke="rgba(var(--white-rgb),0.2)" stroke-width="1" stroke-dasharray="50" stroke-dashoffset="50" opacity="0">
+                <animate attributeName="opacity" from="0" to="1" dur="0.1s" fill="freeze" begin="1s"/>
+                <animate attributeName="stroke-dashoffset" from="50" to="0" dur="0.4s" fill="freeze" begin="1s"/>
+              </path>
+              <polygon points="222,116 232,120 222,124" fill="rgba(var(--white-rgb),0.2)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.2s" fill="freeze" begin="1.3s"/></polygon>
+              <text x="200" y="115" font-family="monospace" font-size="7" fill="rgba(var(--white-rgb),0.3)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1s"/>axes</text>
+              <!-- Barras DESPUÉS — pequeñas, crecen desde baseline -->
+              <rect x="240" y="183" width="30" height="0" rx="2" fill="rgba(var(--green-rgb),0.3)" stroke="rgba(var(--green-rgb),0.5)" stroke-width="0.5">
+                <animate attributeName="height" from="0" to="30" dur="0.5s" fill="freeze" begin="1.4s"/>
+                <animate attributeName="y" from="183" to="153" dur="0.5s" fill="freeze" begin="1.4s"/>
+              </rect>
+              <rect x="278" y="183" width="30" height="0" rx="2" fill="rgba(var(--green-rgb),0.3)" stroke="rgba(var(--green-rgb),0.5)" stroke-width="0.5">
+                <animate attributeName="height" from="0" to="40" dur="0.5s" fill="freeze" begin="1.55s"/>
+                <animate attributeName="y" from="183" to="143" dur="0.5s" fill="freeze" begin="1.55s"/>
+              </rect>
+              <rect x="316" y="183" width="30" height="0" rx="2" fill="rgba(var(--green-rgb),0.3)" stroke="rgba(var(--green-rgb),0.5)" stroke-width="0.5">
+                <animate attributeName="height" from="0" to="35" dur="0.5s" fill="freeze" begin="1.7s"/>
+                <animate attributeName="y" from="183" to="148" dur="0.5s" fill="freeze" begin="1.7s"/>
+              </rect>
+              <rect x="354" y="183" width="30" height="0" rx="2" fill="rgba(var(--green-rgb),0.5)" stroke="rgba(var(--green-rgb),0.8)" stroke-width="0.5">
+                <animate attributeName="height" from="0" to="42" dur="0.5s" fill="freeze" begin="1.85s"/>
+                <animate attributeName="y" from="183" to="141" dur="0.5s" fill="freeze" begin="1.85s"/>
+              </rect>
+              <text x="369" y="198" font-family="monospace" font-size="6" fill="rgba(var(--green-rgb),0.8)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2s"/>0.9s</text>
+              <!-- Speed bar -->
+              <rect x="240" y="210" width="160" height="20" rx="3" fill="rgba(var(--green-rgb),0.08)" stroke="rgba(var(--green-rgb),0.2)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.1s"/></rect>
+              <rect x="243" y="213" width="0" height="14" rx="2" fill="rgba(var(--green-rgb),0.4)">
+                <animate attributeName="width" from="0" to="140" dur="0.8s" fill="freeze" begin="2.2s"/>
+              </rect>
+              <text x="398" y="223" font-family="monospace" font-size="7" fill="rgba(var(--green-rgb),0.8)" text-anchor="end" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.8s"/>+89% faster</text>
+            </svg>
+          </div>
+        </article>
+
+        <!-- Slide 03: Wireframe → diseño final -->
+        <article class="svc-slide">
+          <div class="svc-slide__text">
+            <span class="svc-slide__num">03 ——</span>
+            <h3 class="svc-slide__title">Diseño <br>UX/UI</h3>
+            <p class="svc-slide__desc">Interfaces que tienen sentido. Diseñamos la experiencia antes de escribir una línea de código.</p>
+            <div class="tags"><span class="tag">Figma</span><span class="tag">Prototyping</span><span class="tag">Research</span></div>
+          </div>
+          <div class="svc-slide__art">
+            <svg class="svc-svg" id="svg-ux" role="img" aria-label="Ilustración: del wireframe al diseño final" viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="g3" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(var(--white-rgb),0.04)" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="420" height="260" fill="url(#g3)"/>
+              <!-- Wireframe — aparece primero -->
+              <rect x="15" y="30" width="160" height="200" rx="3" fill="none" stroke="rgba(var(--white-rgb),0.15)" stroke-width="1" opacity="0">
+                <animate attributeName="opacity" from="0" to="1" dur="0.4s" fill="freeze" begin="0s"/>
+              </rect>
+              <rect x="25" y="40" width="140" height="16" rx="2" fill="rgba(var(--white-rgb),0.06)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="0.3s"/></rect>
+              <rect x="25" y="62" width="90" height="8" rx="2" fill="rgba(var(--white-rgb),0.08)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="0.5s"/></rect>
+              <rect x="25" y="75" width="140" height="5" rx="1" fill="rgba(var(--white-rgb),0.05)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="0.6s"/></rect>
+              <rect x="25" y="84" width="120" height="5" rx="1" fill="rgba(var(--white-rgb),0.05)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="0.7s"/></rect>
+              <rect x="25" y="100" width="140" height="70" rx="2" fill="rgba(var(--white-rgb),0.03)" stroke="rgba(var(--white-rgb),0.08)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="0.8s"/></rect>
+              <line x1="25" y1="100" x2="165" y2="170" stroke="rgba(var(--white-rgb),0.05)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.2s" fill="freeze" begin="0.9s"/></line>
+              <line x1="165" y1="100" x2="25" y2="170" stroke="rgba(var(--white-rgb),0.05)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.2s" fill="freeze" begin="0.9s"/></line>
+              <rect x="25" y="180" width="60" height="14" rx="2" fill="rgba(var(--white-rgb),0.06)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1s"/></rect>
+              <rect x="90" y="180" width="75" height="14" rx="2" fill="rgba(var(--white-rgb),0.06)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.1s"/></rect>
+              <text x="95" y="240" font-family="monospace" font-size="7" fill="rgba(var(--white-rgb),0.2)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.1s"/>wireframe</text>
+              <!-- Flecha animada -->
+              <path d="M 185 130 L 213 130" stroke="rgba(var(--green-rgb),0.5)" stroke-width="1.5" stroke-dasharray="32" stroke-dashoffset="32">
+                <animate attributeName="stroke-dashoffset" from="32" to="0" dur="0.4s" fill="freeze" begin="1.3s"/>
+              </path>
+              <polygon points="213,126 221,130 213,134" fill="rgba(var(--green-rgb),0.5)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.2s" fill="freeze" begin="1.6s"/></polygon>
+              <!-- Diseño final — aparece con fade -->
+              <rect x="230" y="30" width="175" height="200" rx="3" fill="rgba(var(--green-rgb),0.04)" stroke="rgba(var(--green-rgb),0.3)" stroke-width="1" opacity="0">
+                <animate attributeName="opacity" from="0" to="1" dur="0.6s" fill="freeze" begin="1.7s"/>
+              </rect>
+              <rect x="230" y="30" width="175" height="22" rx="3" fill="rgba(var(--green-rgb),0.15)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" fill="freeze" begin="1.9s"/></rect>
+              <text x="318" y="44" font-family="monospace" font-size="7" fill="rgba(var(--green-rgb),0.9)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2s"/>axes.design</text>
+              <rect x="242" y="60" width="150" height="10" rx="2" fill="rgba(var(--green-rgb),0.5)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.1s"/></rect>
+              <rect x="242" y="76" width="150" height="5" rx="2" fill="rgba(var(--white-rgb),0.1)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.2s"/></rect>
+              <rect x="242" y="100" width="150" height="80" rx="4" fill="rgba(var(--green-rgb),0.08)" stroke="rgba(var(--green-rgb),0.2)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.4s" fill="freeze" begin="2.3s"/></rect>
+              <circle cx="317" cy="140" r="0" fill="rgba(var(--green-rgb),0.15)" stroke="rgba(var(--green-rgb),0.4)" stroke-width="0.5"><animate attributeName="r" from="0" to="20" dur="0.5s" fill="freeze" begin="2.4s"/></circle>
+              <rect x="242" y="192" width="68" height="16" rx="3" fill="rgba(var(--green-rgb),0.3)" stroke="rgba(var(--green-rgb),0.5)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.6s"/></rect>
+              <rect x="318" y="192" width="74" height="16" rx="3" fill="rgba(var(--white-rgb),0.05)" stroke="rgba(var(--white-rgb),0.1)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.7s"/></rect>
+              <text x="325" y="240" font-family="monospace" font-size="7" fill="rgba(var(--green-rgb),0.5)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.8s"/>diseño final</text>
+            </svg>
+          </div>
+        </article>
+
+        <!-- Slide 04: Idea → opciones → roadmap -->
+        <article class="svc-slide">
+          <div class="svc-slide__text">
+            <span class="svc-slide__num">04 ——</span>
+            <h3 class="svc-slide__title">Consultoría <br>IT</h3>
+            <p class="svc-slide__desc">¿No sabes por dónde empezar? Te ayudamos a tomar las decisiones técnicas correctas antes de invertir.</p>
+            <div class="tags"><span class="tag">Architecture</span><span class="tag">Strategy</span><span class="tag">Roadmap</span></div>
+          </div>
+          <div class="svc-slide__art">
+            <svg class="svc-svg" id="svg-it" role="img" aria-label="Ilustración: consultoría IT, de la idea al roadmap" viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="g4" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(var(--white-rgb),0.04)" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="420" height="260" fill="url(#g4)"/>
+              <!-- Nodo inicio -->
+              <circle cx="50" cy="130" r="18" fill="rgba(var(--white-rgb),0.05)" stroke="rgba(var(--white-rgb),0.2)" stroke-width="1" opacity="0">
+                <animate attributeName="opacity" from="0" to="1" dur="0.4s" fill="freeze" begin="0s"/>
+              </circle>
+              <text x="50" y="134" font-family="monospace" font-size="7" fill="rgba(var(--white-rgb),0.5)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="0.3s"/>idea</text>
+              <!-- Líneas ramas — se dibujan -->
+              <path d="M 68 118 L 130 80" stroke="rgba(var(--white-rgb),0.12)" stroke-width="1" stroke-dasharray="70" stroke-dashoffset="70">
+                <animate attributeName="stroke-dashoffset" from="70" to="0" dur="0.4s" fill="freeze" begin="0.5s"/>
+              </path>
+              <path d="M 68 130 L 130 130" stroke="rgba(var(--green-rgb),0.6)" stroke-width="2" stroke-dasharray="65" stroke-dashoffset="65">
+                <animate attributeName="stroke-dashoffset" from="65" to="0" dur="0.4s" fill="freeze" begin="0.6s"/>
+              </path>
+              <path d="M 68 142 L 130 180" stroke="rgba(var(--white-rgb),0.12)" stroke-width="1" stroke-dasharray="70" stroke-dashoffset="70">
+                <animate attributeName="stroke-dashoffset" from="70" to="0" dur="0.4s" fill="freeze" begin="0.7s"/>
+              </path>
+              <!-- Opciones -->
+              <rect x="130" y="62" width="70" height="36" rx="3" fill="rgba(var(--white-rgb),0.04)" stroke="rgba(var(--white-rgb),0.1)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="0.9s"/></rect>
+              <text x="165" y="78" font-family="monospace" font-size="6.5" fill="rgba(var(--white-rgb),0.25)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1s"/>opción A</text>
+              <text x="165" y="89" font-family="monospace" font-size="5.5" fill="rgba(var(--red2-rgb),0.5)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.1s"/>❌ costosa</text>
+              <rect x="130" y="112" width="70" height="36" rx="3" fill="rgba(var(--green-rgb),0.08)" stroke="rgba(var(--green-rgb),0.4)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1s"/></rect>
+              <text x="165" y="128" font-family="monospace" font-size="6.5" fill="rgba(var(--green-rgb),0.9)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.1s"/>opción B</text>
+              <text x="165" y="139" font-family="monospace" font-size="5.5" fill="rgba(var(--green-rgb),0.6)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.2s"/>✓ correcta</text>
+              <rect x="130" y="162" width="70" height="36" rx="3" fill="rgba(var(--white-rgb),0.04)" stroke="rgba(var(--white-rgb),0.1)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.1s"/></rect>
+              <text x="165" y="178" font-family="monospace" font-size="6.5" fill="rgba(var(--white-rgb),0.25)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.2s"/>opción C</text>
+              <text x="165" y="189" font-family="monospace" font-size="5.5" fill="rgba(var(--red2-rgb),0.5)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.3s"/>❌ riesgosa</text>
+              <!-- Flecha resultado -->
+              <path d="M 200 130 L 238 130" stroke="rgba(var(--green-rgb),0.5)" stroke-width="1.5" stroke-dasharray="42" stroke-dashoffset="42">
+                <animate attributeName="stroke-dashoffset" from="42" to="0" dur="0.4s" fill="freeze" begin="1.5s"/>
+              </path>
+              <polygon points="237,126 246,130 237,134" fill="rgba(var(--green-rgb),0.5)" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.2s" fill="freeze" begin="1.8s"/></polygon>
+              <!-- Resultado roadmap -->
+              <rect x="248" y="90" width="150" height="80" rx="4" fill="rgba(var(--green-rgb),0.06)" stroke="rgba(var(--green-rgb),0.3)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.5s" fill="freeze" begin="1.9s"/></rect>
+              <text x="323" y="118" font-family="monospace" font-size="7.5" fill="rgba(var(--green-rgb),0.8)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.1s"/>roadmap</text>
+              <rect x="262" y="126" width="0" height="5" rx="2" fill="rgba(var(--green-rgb),0.2)"><animate attributeName="width" from="0" to="120" dur="0.5s" fill="freeze" begin="2.2s"/></rect>
+              <rect x="262" y="136" width="0" height="5" rx="2" fill="rgba(var(--green-rgb),0.15)"><animate attributeName="width" from="0" to="100" dur="0.5s" fill="freeze" begin="2.35s"/></rect>
+              <rect x="262" y="146" width="0" height="5" rx="2" fill="rgba(var(--green-rgb),0.1)"><animate attributeName="width" from="0" to="110" dur="0.5s" fill="freeze" begin="2.5s"/></rect>
+              <rect x="248" y="185" width="150" height="18" rx="3" fill="rgba(var(--green-rgb),0.1)" stroke="rgba(var(--green-rgb),0.2)" stroke-width="0.5" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.7s"/></rect>
+              <text x="323" y="197" font-family="monospace" font-size="7" fill="rgba(var(--green-rgb),0.7)" text-anchor="middle" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.8s"/>axes te guía aquí</text>
+            </svg>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ 04 DIFERENCIAL ══ -->
+<div class="sticky-outer" id="s-diff-outer">
+  <section class="sticky-inner diff" id="s-diferencial">
+    <span class="sec-annotation">04 / POR QUÉ AXES</span>
+    <p class="sec-label diff__label" id="diff-label">// por qué axes</p>
+
+    <div class="diff-slide" id="dslide1">
+      <span class="diff-slide__num">01 —</span>
+      <h3 class="diff-slide__title">Hablas con quien construye.</h3>
+      <div class="diff-slide__desc">Sin account managers, sin filtros. Comunicación directa con el equipo que escribe el código.</div>
+    </div>
+    <div class="diff-slide" id="dslide2">
+      <span class="diff-slide__num">02 —</span>
+      <h3 class="diff-slide__title">Ejecutamos sin burocracia.</h3>
+      <div class="diff-slide__desc">Equipo pequeño, decisiones rápidas. Sin capas de aprobación que demoran semanas.</div>
+    </div>
+    <div class="diff-slide" id="dslide3">
+      <span class="diff-slide__num">03 —</span>
+      <h3 class="diff-slide__title">Construimos desde cero.</h3>
+      <div class="diff-slide__desc">No parchamos plantillas ni adaptamos código ajeno. Todo lo que entregamos es sostenible y tuyo.</div>
+    </div>
+
+    <div class="diff__dots">
+      <span class="diff-dot" id="dd1"></span><span class="diff-dot" id="dd2"></span><span class="diff-dot" id="dd3"></span>
+    </div>
+    <div class="diff__progress"><div class="diff__progress-fill" id="diff-prog"></div></div>
+  </section>
+</div>
+
+<!-- ══ 05 METODOLOGÍA ══ -->
+<div class="sticky-outer" id="s-met-outer">
+  <section class="sticky-inner met" id="s-metodologia">
+    <div class="met__bg"></div>
+    <span class="sec-annotation">05 / METODOLOGÍA</span>
+    <div class="met__grid">
+
+      <!-- Izquierda: icono de la fase activa (en móvil solo el título) -->
+      <div class="met__left">
+        <p class="sec-label">// cómo trabajamos</p>
+        <h2 class="sec-title met__title">Del brief al<br>deploy.</h2>
+        <div class="met__icon">
+          <!-- Icono 1: Brief — punto que irradia -->
+          <svg class="met-icon is-active" id="micon1" aria-hidden="true" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="12" fill="var(--green)"/>
+            <circle cx="100" cy="100" r="28" fill="none" stroke="var(--green)" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+            <circle cx="100" cy="100" r="50" fill="none" stroke="var(--green)" stroke-width="0.8" opacity="0.3"/>
+            <circle cx="100" cy="100" r="75" fill="none" stroke="var(--green)" stroke-width="0.5" opacity="0.15"/>
+            <line x1="100" y1="25" x2="100" y2="55" stroke="var(--green)" stroke-width="1.5" opacity="0.7"/>
+            <line x1="100" y1="145" x2="100" y2="175" stroke="var(--green)" stroke-width="1.5" opacity="0.7"/>
+            <line x1="25" y1="100" x2="55" y2="100" stroke="var(--green)" stroke-width="1.5" opacity="0.7"/>
+            <line x1="145" y1="100" x2="175" y2="100" stroke="var(--green)" stroke-width="1.5" opacity="0.7"/>
+            <line x1="47" y1="47" x2="68" y2="68" stroke="var(--green)" stroke-width="1" opacity="0.5"/>
+            <line x1="132" y1="132" x2="153" y2="153" stroke="var(--green)" stroke-width="1" opacity="0.5"/>
+            <line x1="153" y1="47" x2="132" y2="68" stroke="var(--green)" stroke-width="1" opacity="0.5"/>
+            <line x1="47" y1="153" x2="68" y2="132" stroke="var(--green)" stroke-width="1" opacity="0.5"/>
+          </svg>
+
+          <!-- Icono 2: Propuesta — cuadrícula que se ordena -->
+          <svg class="met-icon" id="micon2" aria-hidden="true" viewBox="0 0 200 200">
+            <rect x="30" y="30" width="50" height="50" fill="none" stroke="var(--green)" stroke-width="1.5" opacity="0.9"/>
+            <rect x="90" y="30" width="50" height="50" fill="none" stroke="var(--green)" stroke-width="1.5" opacity="0.6"/>
+            <rect x="120" y="60" width="50" height="50" fill="none" stroke="var(--green)" stroke-width="1.5" opacity="0.3"/>
+            <rect x="30" y="90" width="50" height="50" fill="none" stroke="var(--green)" stroke-width="1.5" opacity="0.6"/>
+            <rect x="90" y="90" width="50" height="50" fill="var(--green)" opacity="0.15" stroke="var(--green)" stroke-width="1.5"/>
+            <rect x="30" y="150" width="50" height="22" fill="none" stroke="var(--green)" stroke-width="1" opacity="0.3"/>
+            <rect x="90" y="150" width="80" height="22" fill="none" stroke="var(--green)" stroke-width="1" opacity="0.3"/>
+            <line x1="55" y1="55" x2="115" y2="115" stroke="var(--green)" stroke-width="0.5" stroke-dasharray="3,3" opacity="0.4"/>
+          </svg>
+
+          <!-- Icono 3: Desarrollo — bloques apilándose -->
+          <svg class="met-icon" id="micon3" aria-hidden="true" viewBox="0 0 200 200">
+            <rect x="70" y="150" width="60" height="22" fill="var(--green)" opacity="0.8" rx="2"/>
+            <rect x="55" y="120" width="90" height="22" fill="none" stroke="var(--green)" stroke-width="1.5" rx="2" opacity="0.7"/>
+            <rect x="40" y="90" width="120" height="22" fill="none" stroke="var(--green)" stroke-width="1.5" rx="2" opacity="0.5"/>
+            <rect x="55" y="60" width="90" height="22" fill="none" stroke="var(--green)" stroke-width="1" rx="2" opacity="0.3"/>
+            <rect x="70" y="30" width="60" height="22" fill="none" stroke="var(--green)" stroke-width="0.8" rx="2" opacity="0.15"/>
+            <line x1="100" y1="28" x2="100" y2="150" stroke="var(--green)" stroke-width="0.5" stroke-dasharray="2,3" opacity="0.2"/>
+          </svg>
+
+          <!-- Icono 4: Revisión — círculo con validación -->
+          <svg class="met-icon" id="micon4" aria-hidden="true" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="70" fill="none" stroke="var(--green)" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="100" cy="100" r="50" fill="none" stroke="var(--green)" stroke-width="1.5" opacity="0.6"/>
+            <circle cx="100" cy="100" r="30" fill="none" stroke="var(--green)" stroke-width="1.5" opacity="0.8"/>
+            <polyline points="75,100 92,118 128,82" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="100" y1="20" x2="100" y2="30" stroke="var(--green)" stroke-width="1.5" opacity="0.5"/>
+            <line x1="100" y1="170" x2="100" y2="180" stroke="var(--green)" stroke-width="1.5" opacity="0.5"/>
+            <line x1="20" y1="100" x2="30" y2="100" stroke="var(--green)" stroke-width="1.5" opacity="0.5"/>
+            <line x1="170" y1="100" x2="180" y2="100" stroke="var(--green)" stroke-width="1.5" opacity="0.5"/>
+          </svg>
+
+          <!-- Icono 5: Deploy — flecha que asciende -->
+          <svg class="met-icon" id="micon5" aria-hidden="true" viewBox="0 0 200 200">
+            <line x1="100" y1="180" x2="100" y2="40" stroke="var(--green)" stroke-width="2" opacity="0.6"/>
+            <polyline points="65,80 100,35 135,80" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="60" y1="120" x2="140" y2="120" stroke="var(--green)" stroke-width="1" opacity="0.3" stroke-dasharray="4,3"/>
+            <line x1="70" y1="145" x2="130" y2="145" stroke="var(--green)" stroke-width="1" opacity="0.2" stroke-dasharray="4,3"/>
+            <line x1="80" y1="168" x2="120" y2="168" stroke="var(--green)" stroke-width="1" opacity="0.1" stroke-dasharray="4,3"/>
+            <circle cx="100" cy="35" r="5" fill="var(--green)" opacity="0.9"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Derecha: lista de fases con línea de progreso -->
+      <div class="met__steps">
+        <div class="met__vline" id="met-vline"></div>
+        <span class="met-dot" id="mdot1"></span>
+        <span class="met-dot" id="mdot2"></span>
+        <span class="met-dot" id="mdot3"></span>
+        <span class="met-dot" id="mdot4"></span>
+        <span class="met-dot" id="mdot5"></span>
+
+        <div class="mstep" id="mstep1">
+          <h3 class="mstep__name"><span class="mstep__num">01.</span>Brief</h3>
+          <p class="mstep__desc">Entendemos el negocio y el problema real antes de proponer nada. Sin asumir, sin saltarnos pasos.</p>
+        </div>
+        <div class="mstep" id="mstep2">
+          <h3 class="mstep__name"><span class="mstep__num">02.</span>Propuesta</h3>
+          <p class="mstep__desc">Stack, alcance, tiempos y costo. Todo claro desde el día uno, sin sorpresas en el camino.</p>
+        </div>
+        <div class="mstep" id="mstep3">
+          <h3 class="mstep__name"><span class="mstep__num">03.</span>Desarrollo</h3>
+          <p class="mstep__desc">Iteraciones cortas con el cliente en cada etapa. El proyecto avanza y el cliente siempre sabe qué está pasando.</p>
+        </div>
+        <div class="mstep" id="mstep4">
+          <h3 class="mstep__name"><span class="mstep__num">04.</span>Revisión</h3>
+          <p class="mstep__desc">Ajustes y aprobación final antes de salir a producción. Nada pasa sin tu visto bueno.</p>
+        </div>
+        <div class="mstep" id="mstep5">
+          <h3 class="mstep__name"><span class="mstep__num">05.</span>Deploy</h3>
+          <p class="mstep__desc">Lanzamiento y soporte post-entrega. El proyecto sale vivo y nos quedamos cerca.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ 06 CASO ══
+     DESHABILITADA: la sección de casos de éxito aún no va. Está dentro de <template> para que no se
+     renderice ni se indexe (no se usa un comentario porque adentro hay comentarios y no se pueden anidar).
+     Para activarla: quitar las líneas <template id="tpl-caso"> y </template>, y descomentar el enlace
+     "Proyectos" del nav y el botón "Ver proyectos" del hero. Equipo vuelve a ser 07 (sec-annotation). -->
+<template id="tpl-caso">
+<div class="sticky-outer" id="s-caso-outer">
+  <section class="sticky-inner sticky-inner--light caso" id="s-caso">
+    <span class="sec-annotation sec-annotation--light">06 / CASO DE ÉXITO</span>
+    <div class="caso__grid">
+
+      <div class="caso__info">
+        <span class="badge">CASO DE ÉXITO</span>
+        <h2 class="sec-title sec-title--dark caso__title">OncePro.</h2>
+        <p class="caso__desc">De plantilla rota a producto propio — construido desde cero con el stack de Axes.</p>
+        <div class="tags caso__tags"><span class="tag tag--light">React</span><span class="tag tag--light">Node.js</span><span class="tag tag--light">NestJS</span><span class="tag tag--light">MongoDB</span><span class="tag tag--light">TypeScript</span></div>
+        <a href="#" class="btn btn--outline">Ver proyecto →</a>
+      </div>
+
+      <div class="caso__visual">
+        <!-- Captura dentro de un marco de browser -->
+        <div class="caso__screen browser">
+          <div class="browser__bar">
+            <span class="browser__dot browser__dot--red"></span>
+            <span class="browser__dot browser__dot--yellow"></span>
+            <span class="browser__dot browser__dot--green"></span>
+            <div class="browser__url"><span>oncepro.com</span></div>
+          </div>
+          <div class="browser__body">
+            <img class="browser__img" src="assets/oncepro.png" alt="Captura de OncePro, plataforma web desarrollada a medida por Axes Dev" loading="lazy" onerror="this.parentElement.classList.add('is-fallback')">
+            <!-- Placeholder si no existe assets/oncepro.png -->
+            <div class="browser__fallback"><span class="browser__fallback-logo">OncePro</span><span class="browser__fallback-url">oncepro.com</span></div>
+          </div>
+        </div>
+
+        <!-- Flechas de anotación -->
+        <svg class="caso__arrows" aria-hidden="true" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg">
+          <!-- Flecha 1: desde top-left del screenshot → anotación arriba izq -->
+          <path d="M 160 80 C 80 60, 20 30, 20 10" stroke="var(--bg)" stroke-width="1" fill="none" stroke-dasharray="4,3" opacity="0.5"/>
+          <circle cx="160" cy="80" r="3" fill="var(--bg)" opacity="0.5"/>
+
+          <!-- Flecha 2: desde zona media del screenshot → anotación derecha -->
+          <path d="M 560 180 C 620 160, 660 140, 680 130" stroke="var(--bg)" stroke-width="1" fill="none" stroke-dasharray="4,3" opacity="0.5"/>
+          <circle cx="560" cy="180" r="3" fill="var(--bg)" opacity="0.5"/>
+
+          <!-- Flecha 3: desde bottom del screenshot → anotación abajo -->
+          <path d="M 350 390 C 350 400, 200 408, 150 410" stroke="var(--bg)" stroke-width="1" fill="none" stroke-dasharray="4,3" opacity="0.5"/>
+          <circle cx="350" cy="390" r="3" fill="var(--bg)" opacity="0.5"/>
+
+          <!-- Flecha 4: desde zona nav → anotación izq superior -->
+          <path d="M 200 55 C 140 40, 60 20, 20 50" stroke="var(--bg)" stroke-width="1" fill="none" stroke-dasharray="4,3" opacity="0.5"/>
+          <circle cx="200" cy="55" r="3" fill="var(--bg)" opacity="0.5"/>
+        </svg>
+
+        <!-- Anotaciones flotantes -->
+        <div class="caso__notes">
+          <div class="note note--1"><p class="note__k">✓ Rápida</p><p class="note__v">Carga en menos de 1 segundo</p></div>
+          <div class="note note--2"><p class="note__k">✓ Segura</p><p class="note__v">Sin fallas de seguridad</p></div>
+          <div class="note note--3"><p class="note__k">✓ A medida</p><p class="note__v">Adaptada al negocio de OncePro</p></div>
+          <div class="note note--4"><p class="note__k">✓ Escalable</p><p class="note__v">Arquitectura sin deuda técnica</p></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+</template>
+
+<!-- ══ 06 EQUIPO ══ -->
+<div class="sticky-outer sticky-outer--flow" id="s-eq-outer">
+  <section class="sticky-inner sticky-inner--flow team" id="s-equipo">
+    <span class="sec-annotation">06 / EQUIPO</span>
+    <div class="team__wrap">
+      <p class="sec-label">// el equipo</p>
+      <h2 class="sec-title team__title">Liderado por<br>expertos.</h2>
+      <div class="team__list">
+        <div class="t-member" id="eq1">
+          <div class="t-member__icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polygon points="40,8 72,68 8,68" fill="none" stroke="var(--green)" stroke-width="1.5" opacity="0.9"/>
+              <polygon points="40,20 62,62 18,62" fill="none" stroke="var(--green)" stroke-width="1" opacity="0.5"/>
+              <circle cx="40" cy="44" r="4" fill="var(--green)" opacity="0.8"/>
+              <line x1="40" y1="8" x2="40" y2="44" stroke="var(--green)" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="t-member__body">
+            <p class="t-member__role">// Líder de Desarrollo</p>
+            <h3 class="t-member__name">Andrés Carvajal</h3>
+            <p class="t-member__quote">"Antes de escribir una línea de código, entiendo el problema. El resto viene solo."</p>
+          </div>
+        </div>
+
+        <div class="team__sep"></div>
+
+        <div class="t-member t-member--right" id="eq2">
+          <div class="t-member__icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="35" cy="40" r="30" fill="none" stroke="var(--green)" stroke-width="1.5" opacity="0.9"/>
+              <circle cx="35" cy="40" r="18" fill="none" stroke="var(--green)" stroke-width="1" opacity="0.5"/>
+              <circle cx="50" cy="32" r="8" fill="none" stroke="var(--green)" stroke-width="1" opacity="0.4"/>
+              <circle cx="35" cy="40" r="4" fill="var(--green)" opacity="0.8"/>
+              <circle cx="50" cy="32" r="2" fill="var(--green)" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="t-member__body">
+            <p class="t-member__role">// Líder de Producto</p>
+            <h3 class="t-member__name">Liced Castrillón</h3>
+            <p class="t-member__quote">"Si el usuario necesita un manual para usarlo, está mal diseñado. Así de simple."</p>
+          </div>
+        </div>
+
+        <div class="team__sep"></div>
+
+        <div class="t-member t-member--indent" id="eq3">
+          <div class="t-member__icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="10" y="10" width="26" height="26" fill="none" stroke="var(--green)" stroke-width="1.5" opacity="0.9"/>
+              <rect x="44" y="10" width="26" height="26" fill="none" stroke="var(--green)" stroke-width="1" opacity="0.5"/>
+              <rect x="10" y="44" width="26" height="26" fill="none" stroke="var(--green)" stroke-width="1" opacity="0.5"/>
+              <rect x="44" y="44" width="26" height="26" fill="var(--green)" opacity="0.15" stroke="var(--green)" stroke-width="1.5"/>
+              <circle cx="57" cy="57" r="4" fill="var(--green)" opacity="0.8"/>
+              <line x1="10" y1="10" x2="70" y2="70" stroke="var(--green)" stroke-width="0.6" stroke-dasharray="3,3" opacity="0.3"/>
+            </svg>
+          </div>
+          <div class="t-member__body">
+            <p class="t-member__role">// Líder de Infraestructura</p>
+            <h3 class="t-member__name">Edgar Palma</h3>
+            <p class="t-member__quote">"En producción no hay excusas. O funciona o no funciona. Yo me aseguro de que funcione."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ 07 CONTACTO ══ -->
+<section class="contact" id="s-contacto">
+  <div class="contact__bg" id="contact-bg"></div>
+  <div class="contact__inner">
+    <p class="sec-label contact__label">// siguiente paso</p>
+    <h2 class="contact__title">¿Tienes un<br>proyecto?<br><span>Cuéntanos.</span></h2>
+    <p class="contact__sub">Respondemos en menos de un día. Sin formularios largos, sin reuniones de ventas. Solo una conversación directa con el equipo.</p>
+    <a href="https://wa.me/573229401530?text=Hola%20Axes%20Dev%2C%20tengo%20un%20proyecto%20y%20quiero%20conversar." class="btn btn--big" target="_blank" rel="noopener">→ Escribir por WhatsApp<span class="btn__cmd">// axes.init(tuProyecto)</span></a>
+    <p class="contact__meta">Tiempo de respuesta: <span>&lt; 1 día hábil</span></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__logo">Axes<span>.dev</span></div>
+  <p class="footer__note">© <span id="year"></span> Axes Dev</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
