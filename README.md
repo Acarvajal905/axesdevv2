@@ -91,7 +91,6 @@ Lo que no se resuelve desde el código y hace falta para posicionar:
 
 ## Pendientes
 
-- El botón "Ver proyecto" del caso de éxito apunta a `#` (la sección está deshabilitada).
 - Activar la sección de casos de éxito cuando esté lista y agregar la captura real de OncePro en `assets/`.
 - Confirmar el dominio definitivo y reemplazar `https://axes.dev/` donde corresponda.
 - Reemplazar `assets/favicon.svg` y `assets/og-image.png` por versiones con el logo real (son placeholders generados).

@@ -94,8 +94,6 @@ body {
 .btn--big:hover { transform: translateY(-3px); }
 .btn--ghost { font-family: var(--font-body); font-weight: 400; font-size: 0.82rem; color: var(--gray); }
 .btn--ghost:hover { color: var(--white); }
-.btn--outline { font-size: 0.78rem; color: var(--bg); border: 1.5px solid var(--bg); padding: 0.7rem 1.4rem; }
-.btn--outline:hover { background: var(--bg); color: var(--light); }
 /* "Comando" que cubre el botón al hacer hover */
 .btn__cmd {
   position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
@@ -382,7 +380,7 @@ body {
 .caso__info .badge { margin-bottom: 1.5rem; }
 .caso__title { font-size: clamp(2.5rem, 4vw, 4rem); line-height: 0.95; margin-bottom: 1rem; }
 .caso__desc { font-size: 1rem; color: var(--gray); line-height: 1.75; margin-bottom: 1.5rem; }
-.caso__tags { gap: 0.4rem; margin-bottom: 2rem; }
+.caso__tags { gap: 0.4rem; }
 .caso__visual { position: relative; }
 .caso__screen { position: relative; opacity: 0; transform: translateY(30px) scale(0.97); transition: opacity 0.9s 0.3s, transform 0.9s 0.3s; }
 .caso__arrows { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: opacity 0.6s 0.8s; }
