@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://axes.dev/sitemap.xml
+Sitemap: https://axesdev.com/sitemap.xml

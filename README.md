@@ -72,13 +72,13 @@ Todo el SEO on-page está en `index.html`:
 - `canonical`, `robots`, `theme-color`, favicon, Open Graph y Twitter Card con `assets/og-image.png` (1200×630).
 - Los tres botones "Hablemos" (nav, menú móvil y hero) y el CTA de contacto abren WhatsApp (`https://wa.me/573229401530`)
   con un mensaje precargado; el número también va en el JSON-LD.
-- Datos estructurados JSON-LD (schema.org): `Organization` con `alternateName` (axesdev, axes.dev, Axes), equipo y los 4 servicios,
+- Datos estructurados JSON-LD (schema.org): `Organization` con `alternateName` (axesdev, axesdev.com, Axes), equipo y los 4 servicios,
   más `WebSite` y `WebPage`. Se validan en https://validator.schema.org/ y en la prueba de resultados enriquecidos de Google.
 - HTML semántico: `<main>`, una `<section>` por bloque, un solo `h1` (visible para buscadores y lectores de pantalla detrás del
   typewriter), `h2` por sección y `h3` para servicios, diferenciales, fases y miembros del equipo. Las ilustraciones llevan
   `aria-label`; los iconos decorativos, `aria-hidden`.
 
-La URL del sitio (`https://axes.dev/`) está repetida en `canonical`, `og:url`, `twitter:image`, el JSON-LD, `robots.txt` y
+La URL del sitio (`https://axesdev.com/`) está repetida en `canonical`, `og:url`, `twitter:image`, el JSON-LD, `robots.txt` y
 `sitemap.xml`. Si el dominio final es otro, buscar y reemplazar en esos archivos.
 
 Lo que no se resuelve desde el código y hace falta para posicionar:
@@ -92,7 +92,6 @@ Lo que no se resuelve desde el código y hace falta para posicionar:
 ## Pendientes
 
 - Activar la sección de casos de éxito cuando esté lista y agregar la captura real de OncePro en `assets/`.
-- Confirmar el dominio definitivo y reemplazar `https://axes.dev/` donde corresponda.
 - Reemplazar `assets/favicon.svg` y `assets/og-image.png` por versiones con el logo real (son placeholders generados).
 
 ## Estado
